@@ -1,3 +1,5 @@
+require 'pry'
+
 class Stack
 
   def initialize
@@ -5,7 +7,7 @@ class Stack
   end
 
   def push(value)
-    @stack.push(value)
+      @stack.push(value) 
   end
 
   def pop
@@ -20,4 +22,28 @@ class Stack
     @stack.length
   end
 
+
 end
+
+
+def balancing_parentheses(string)
+  stack = Stack.new
+
+
+  string.chars do |c| 
+
+    if c == '('
+      stack.push(c)
+    elsif c == ')'
+      stack.peek == '(' ? stack.pop : stack.push(c)
+    end
+
+  end
+
+  stack.size
+
+end
+
+
+# binding.pry
+
